@@ -1,0 +1,12 @@
+{
+	"extends": "./tsconfig.test.json",
+	"compilerOptions": {
+		"declaration": true,
+		"sourceMap": true,
+		"sourceRoot": "../source",
+		"outDir": "../build/"
+	},
+	"files": [
+		"index.ts"
+	]
+}

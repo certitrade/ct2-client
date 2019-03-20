@@ -1,0 +1,61 @@
+{
+ "name": "@certitrade/ct2-client",
+ "version": "2.0.0",
+ "description": "Javascript library with the things common between the Card and PSP clients.",
+ "private": false,
+ "main": "build/index.js",
+ "typings": "build/index.d.ts",
+ "jest": {
+  "globals": {
+   "ts-jest": {
+    "tsConfig": "source/tsconfig.test.json"
+   }
+  },
+  "testEnvironment": "node",
+  "testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
+  "testPathIgnorePatterns": [
+   "node_modules/",
+   "build/"
+  ],
+  "collectCoverageFrom": [
+   "**/*.{ts,tsx,js,jsx}",
+   "!**/node_modules/**",
+   "!**/build/**"
+  ],
+  "preset": "ts-jest",
+  "testMatch": null
+ },
+ "scripts": {
+  "dev": "watch 'npm run build' .",
+  "lint": "tslint --config tslint.json --project source",
+  "build": "tsc -p source",
+  "test": "jest",
+  "test:watch": "watch jest",
+  "prepare": "npm run build",
+  "release": "release-it patch -n",
+  "clean": "rm -rf build node_modules coverage"
+ },
+ "author": "Simon Mika <simon.mika@certitrade.se>",
+ "license": "MIT",
+ "git": {
+  "tagName": "v${version}"
+ },
+ "github": {
+  "release": true
+ },
+ "dependencies": {
+  "node-fetch": "^2.3.0"
+ },
+ "devDependencies": {
+  "@types/jest": "^24.0.11",
+  "@types/node": "^11.11.4",
+  "@types/node-fetch": "^2.1.6",
+  "babel-core": "^6.26.3",
+  "babel-jest": "^24.5.0",
+  "jest": "^24",
+  "ts-jest": "^24.0.0",
+  "tslint": "^5.14.0",
+  "typescript": "^3.3.4000",
+  "watch": "^1.0.2"
+ }
+}
