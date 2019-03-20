@@ -3,6 +3,7 @@ import { Currency } from "./Currency"
 import { CurrencyCode } from "./CurrencyCode"
 import { Error } from "./Error"
 import * as hal from "./hal"
+import { Language } from "./Language"
 
 export {
 	Connection,
@@ -10,4 +11,5 @@ export {
 	CurrencyCode,
 	Error,
 	hal,
+	Language,
 }
