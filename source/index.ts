@@ -1,7 +1,13 @@
-export { Connection } from "./Connection"
-export { Currency } from "./Currency"
-export { Error } from "./Error"
-export { Payment } from "./Payment"
-export { PaymentAccount } from "./PaymentAccount"
-export { Product } from "./Product"
-export { Refund } from "./Refund"
+import { Connection } from "./Connection"
+import { Currency } from "./Currency"
+import { CurrencyCode } from "./CurrencyCode"
+import { Error } from "./Error"
+import * as hal from "./hal"
+
+export {
+	Connection,
+	Currency,
+	CurrencyCode,
+	Error,
+	hal,
+}
