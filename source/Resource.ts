@@ -2,7 +2,7 @@ import { Connection } from "./Connection"
 import * as model from "@certitrade/ct2-model"
 
 export class Resource<T> {
-	constructor(private readonly connection: Connection, private readonly path: string) {
+	constructor(protected readonly connection: Connection, protected readonly path: string) {
 	}
 	async retrieve(): Promise<T | model.Error> {
 		return (await this.connection.get(this.path)) as T | model.Error
