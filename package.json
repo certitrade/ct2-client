@@ -1,6 +1,6 @@
 {
  "name": "@certitrade/ct2-client",
- "version": "2.0.7",
+ "version": "2.0.8",
  "description": "Javascript client for common parts between Certitrade version 2 Card and PSP clients.",
  "private": false,
  "main": "build/index.js",
