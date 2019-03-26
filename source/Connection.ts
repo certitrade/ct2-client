@@ -10,7 +10,7 @@ export class Connection {
 		const date = new Date().toUTCString()
 		if (body)
 			init.body = JSON.stringify(body)
-		const response = await fetch(url, {
+		init = {
 			...init,
 			headers: {
 				...init.headers,
@@ -18,7 +18,10 @@ export class Connection {
 				authorization: "CertiTrade " + this.userID + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
 				date,
 			},
-		})
+		}
+		console.log("fetch " + url)
+		console.log(init)
+		const response = await fetch(url, init)
 		let result: T | model.Error
 		switch (response.headers.get("content-type")) {
 			case "application/hal+json":
