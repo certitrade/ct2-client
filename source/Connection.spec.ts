@@ -1,18 +1,20 @@
 import { Connection } from "./Connection"
 import * as model from "@certitrade/ct2-model"
-import "../environment.local"
+import * as dotenv from "dotenv"
+
+dotenv.config()
 
 describe("Connection", () => {
-	it("CertitradeBaseUrl environment variable set", () => expect(process.env.CertitradeBaseUrl).toBeTruthy())
-	it("CertitradeUserId environment variable set", () => expect(process.env.CertitradeUserId).toBeTruthy())
-	it("CertitradeUserKey environment variable set", () => expect(process.env.CertitradeUserKey).toBeTruthy())
+	it("pspBaseUrl environment variable set", () => expect(process.env.pspBaseUrl).toBeTruthy())
+	it("pspUserId environment variable set", () => expect(process.env.pspUserId).toBeTruthy())
+	it("pspUserKey environment variable set", () => expect(process.env.pspUserKey).toBeTruthy())
 	it("new", () => {
-		const connection = new Connection(process.env.CertitradeBaseUrl || "", "12345", "0123456789abcdefghij")
+		const connection = new Connection(process.env.pspBaseUrl || "", "12345", "0123456789abcdefghij")
 		expect(connection).toBeTruthy()
-		expect(connection.baseUrl).toBe(process.env.CertitradeBaseUrl)
+		expect(connection.baseUrl).toBe(process.env.pspBaseUrl)
 	})
 	it("not authorized", async () => {
-		const connection = new Connection(process.env.CertitradeBaseUrl || "", "12345", "0123456789abcdefghij")
+		const connection = new Connection(process.env.pspBaseUrl || "", "12345", "0123456789abcdefghij")
 		expect(connection).toBeTruthy()
 		const answer = await connection.get("payment") as model.Error
 		expect(answer.describedBy).toBeNull()
@@ -21,7 +23,7 @@ describe("Connection", () => {
 		expect(answer.detail).toBe("")
 	})
 	it("authorized", async () => {
-		const connection = new Connection(process.env.CertitradeBaseUrl || "", process.env.CertitradeUserId || "", process.env.CertitradeUserKey || "")
+		const connection = new Connection(process.env.pspBaseUrl || "", process.env.pspUserId || "", process.env.pspUserKey || "")
 		expect(connection).toBeTruthy()
 		const payments = await connection.get("payment") as model.hal.Collection
 		expect(payments).toHaveProperty("total_size")
