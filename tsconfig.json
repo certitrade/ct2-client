@@ -3,8 +3,8 @@
 	"compilerOptions": {
 		"declaration": true,
 		"sourceMap": true,
-		"sourceRoot": "../source",
-		"outDir": "../build/"
+		"sourceRoot": "../",
+		"outDir": "dist"
 	},
 	"files": [
 		"index.ts"

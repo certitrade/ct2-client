@@ -2,41 +2,49 @@
  "name": "@certitrade/ct2-client",
  "version": "2.0.10",
  "description": "Javascript client for common parts between Certitrade version 2 Card and PSP clients.",
+ "author": "Simon Mika <simon.mika@certitrade.se>",
+ "license": "MIT",
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/certitrade/ct2-client"
+ },
+ "bugs": {
+  "url": "https://github.com/certitrade/ct2-client/issues"
+ },
+ "homepage": "https://github.com/certitrade/ct2-client#readme",
  "private": false,
- "main": "build/index.js",
- "typings": "build/index.d.ts",
+ "main": "dist/index.js",
+ "typings": "dist/index.d.ts",
  "jest": {
   "globals": {
    "ts-jest": {
-    "tsConfig": "source/tsconfig.test.json"
+    "tsConfig": "tsconfig.test.json"
    }
   },
   "testEnvironment": "node",
   "testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
   "testPathIgnorePatterns": [
    "node_modules/",
-   "build/"
+   "dist/"
   ],
   "collectCoverageFrom": [
    "**/*.{ts,tsx,js,jsx}",
    "!**/node_modules/**",
-   "!**/build/**"
+   "!**/dist/**"
   ],
   "preset": "ts-jest",
   "testMatch": null
  },
  "scripts": {
   "dev": "watch 'npm run build' .",
-  "lint": "tslint --config tslint.json --project source",
-  "build": "tsc -p source",
+  "lint": "tslint --config tslint.json --project .",
+  "build": "tsc -p .",
   "test": "jest",
   "test:watch": "watch jest",
   "prepare": "npm run build",
   "release": "release-it patch -n",
-  "clean": "rm -rf build node_modules coverage"
+  "clean": "rm -rf dist node_modules coverage"
  },
- "author": "Simon Mika <simon.mika@certitrade.se>",
- "license": "MIT",
  "git": {
   "tagName": "v${version}"
  },
