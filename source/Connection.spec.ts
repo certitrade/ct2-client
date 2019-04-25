@@ -25,7 +25,7 @@ describe("Connection", () => {
 	it("authorized", async () => {
 		const connection = new Connection(process.env.pspBaseUrl || "", process.env.pspUserId || "", process.env.pspUserKey || "")
 		expect(connection).toBeTruthy()
-		const payments = await connection.get("payment") as model.hal.Collection
+		const payments = await connection.get("payment")
 		expect(payments).toHaveProperty("total_size")
 		expect(payments).toHaveProperty("max_page_size")
 	})
