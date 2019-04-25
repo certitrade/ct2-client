@@ -14,9 +14,9 @@ export class Connection {
 			...init,
 			headers: {
 				...init.headers,
-				"content-type": "application/json; charset=utf-8",
-				authorization: "CertiTrade " + this.userID + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
-				date,
+				"Content-Type": "application/json; charset=utf-8",
+				Authorization: "CertiTrade " + this.userID + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
+				Date: date,
 			},
 		}
 		console.log("fetch " + url)
