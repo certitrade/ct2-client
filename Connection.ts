@@ -24,6 +24,8 @@ export class Connection {
 		const response = await fetch(url, init)
 		let result: T | model.Error
 		switch (response.headers.get("content-type")) {
+			case "application/json":
+			case "application/json; charset=utf-8":
 			case "application/hal+json":
 				result = await response.json() as T
 				break
@@ -31,7 +33,7 @@ export class Connection {
 				result = await response.json() as model.Error
 				break
 			default:
-				result = { describedBy: this.baseUrl + resource, title: "Connection model.Error", httpStatus: response.status, detail: await response.text() }
+				result = { describedBy: this.baseUrl + resource, title: "Connection Error", httpStatus: response.status, detail: await response.text() }
 				break
 		}
 		return result
