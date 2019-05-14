@@ -3,7 +3,7 @@ import * as model from "@certitrade/ct2-model"
 import { default as fetch, RequestInit } from "node-fetch"
 
 export class Connection {
-	constructor(readonly baseUrl: string, private userID: string, private userKey: string) {
+	constructor(readonly baseUrl: string, private userId: string, private userKey: string) {
 	}
 	private async fetch<T>(resource: string, init: RequestInit, body?: any): Promise<T | model.Error> {
 		const url = this.baseUrl + resource
@@ -15,7 +15,7 @@ export class Connection {
 			headers: {
 				...init.headers,
 				"Content-Type": "application/json; charset=utf-8",
-				Authorization: "CertiTrade " + this.userID + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
+				Authorization: "CertiTrade " + this.userId + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
 				Date: date,
 			},
 		}
